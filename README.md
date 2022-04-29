@@ -17,7 +17,7 @@ However, to determine if the server-side protection of standard LDAP is enforced
 Install using pipx:
 
 ```
-pipx install git+https://github.com/puzzlepeaches/LdapRelayScan.git@master
+pipx install git+https://github.com/zyn3rgy/LdapRelayScan.git
 ```
 
 #### TL;DR - LDAPS can be checked unauthenticated, but checking LDAP requires authentication.
