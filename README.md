@@ -37,7 +37,7 @@ The tool has two methods, **LDAPS** (the default), and **BOTH**. LDAPS only requ
 lrs -method LDAPS -dc-ip 10.0.0.20
 lrs -method BOTH -dc-ip 10.0.0.20 -u domainuser1 
 lrs -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -p badpassword2
-lrs= -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -nthash e6ee750a1feb2c7ee50d46819a6e4d25
+lrs -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -nthash e6ee750a1feb2c7ee50d46819a6e4d25
 ```
 ![](https://github.com/zyn3rgy/LdapRelayScan/blob/main/img/LDAPS_check.PNG)
 ![](https://github.com/zyn3rgy/LdapRelayScan/blob/main/img/BOTH_check.PNG)
