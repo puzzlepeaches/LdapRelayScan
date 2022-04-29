@@ -1,5 +1,7 @@
 # LDAP Relay Scan 
 A tool to check Domain Controllers for LDAP server protections regarding the relay of NTLM authentication. If you're interested in the specifics of the error-based enumeration, see [below](https://github.com/zyn3rgy/LdapRelayScan#error-based-enumeration-specifics). For details regarding what can be done when you identify a lack of LDAP protections, see the [references section](https://github.com/zyn3rgy/LdapRelayScan#references).
+
+
 ## Summary
 There are a couple server-side protections when attempting to relay NTLM authentication LDAP on Domain Controllers. The LDAP protections this tools attempts to enumerate include:
  - LDAPS - [channel binding](https://support.microsoft.com/en-us/topic/use-the-ldapenforcechannelbinding-registry-entry-to-make-ldap-authentication-over-ssl-tls-more-secure-e9ecfa27-5e57-8519-6ba3-d2c06b21812e)
@@ -10,6 +12,13 @@ The enforcement of channel binding for LDAP over SSL/TLS can be determined from 
 However, to determine if the server-side protection of standard LDAP is enforced (server signing integrity requirements) the clients credential's must first be validated during the LDAP bind. The potential error identifying the enforcement of this protection is identified from an **authenticated** perspective.
 
 
+## Install 
+
+Install using pipx:
+
+```
+pipx install git+https://github.com/puzzlepeaches/LdapRelayScan.git@master
+```
 
 #### TL;DR - LDAPS can be checked unauthenticated, but checking LDAP requires authentication.
 
@@ -25,10 +34,10 @@ The tool has two methods, **LDAPS** (the default), and **BOTH**. LDAPS only requ
 > Note: Tested using python3.9 on client-side, targeting unpatched Windows Server 2016 and up-to-date Windows Server 2022
 
 ```
-python3.9 LdapRelayScan.py -method LDAPS -dc-ip 10.0.0.20
-python3.9 LdapRelayScan.py -method BOTH -dc-ip 10.0.0.20 -u domainuser1 
-python3.9 LdapRelayScan.py -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -p badpassword2
-python3.9 LdapRelayScan.py -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -nthash e6ee750a1feb2c7ee50d46819a6e4d25
+lrs -method LDAPS -dc-ip 10.0.0.20
+lrs -method BOTH -dc-ip 10.0.0.20 -u domainuser1 
+lrs -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -p badpassword2
+lrs= -method BOTH -dc-ip 10.0.0.20 -u domainuser1 -nthash e6ee750a1feb2c7ee50d46819a6e4d25
 ```
 ![](https://github.com/zyn3rgy/LdapRelayScan/blob/main/img/LDAPS_check.PNG)
 ![](https://github.com/zyn3rgy/LdapRelayScan/blob/main/img/BOTH_check.PNG)
